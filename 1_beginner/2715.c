@@ -17,7 +17,8 @@ int main()
             total_sum += values[i];
         }
         r = N;
-        diff = r_sum = diff_delta = total_sum;
+        r_sum = total_sum;
+        diff = r_sum;
 
         do {
             old_diff = diff;
