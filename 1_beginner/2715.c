@@ -5,33 +5,26 @@
 
 int main()
 {
-    long N;
+    int N, X[1000000], i;
+    long long diff, min_diff;
 
-    while (scanf("%ld", &N) != EOF) {
-        long values[1000000];
-        long i, diff, old_diff, diff_delta;
-        long r, r_sum = 0, total_sum = 0;
+    while (scanf("%d", &N) != EOF) {
+        for (i = 0; i < N; ++i)
+            scanf("%d", &X[i]);
 
-        for (i = 0; i < N; ++i) {
-            scanf("%ld", &values[i]);
-            total_sum += values[i];
+        for (i = 1, diff = 0; i < N; ++i)
+            diff += X[i];
+        diff = X[0] - diff;
+
+        min_diff = llabs(diff);
+        for (i = 1; i < N - 1; ++i) {
+            diff += 2 * X[i];
+
+            if (llabs(diff) < min_diff)
+                min_diff = llabs(diff);
         }
-        r = N;
-        r_sum = total_sum;
-        diff = r_sum;
 
-        do {
-            old_diff = diff;
-            --r;
-            r_sum -= values[r];
-            diff = abs(r_sum - (total_sum - r_sum));
-            diff_delta = diff - old_diff;
-        } while (diff > 0 && diff_delta < 0);
-
-        if (diff_delta > 0)
-            diff = old_diff;
-
-        printf("%ld\n", diff);
+        printf("%lld\n", min_diff);
     }
 
     return 0;
