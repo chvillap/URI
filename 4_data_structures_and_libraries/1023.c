@@ -27,7 +27,7 @@ void countingSort(struct property_t *array, int size, int max)
 
     for (i = size - 1; i >= 0; --i) {
         array[freq[copy[i].avgConsumption] - 1] = copy[i];
-        --freq[k];
+        --freq[i];
     }
 }
 
