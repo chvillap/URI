@@ -6,14 +6,14 @@
 
 int main()
 {
-    char vowels[27], phrase[100001], *p;
+    char vowels[256], phrase[300002], *p;
     int count, flags[256];
 
-    while (fgets(vowels, 27, stdin)) {
-        if (vowels[0] < ' ') break;
+    while (fgets(vowels, 256, stdin) != NULL) {
+        if (vowels[0] < ' ') continue;
 
-        fgets(phrase, 100001, stdin);
-        if (phrase[0] < ' ') break;
+        fgets(phrase, 300002, stdin);
+        if (phrase[0] < ' ') continue;
 
         memset(flags, 0, sizeof(flags));
         for (p = vowels; !(*p == '\n' || *p == '\0'); ++p)
